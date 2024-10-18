@@ -1,0 +1,37 @@
+﻿@model List<PortfolioDbNight.Models.Internship>
+@{
+    ViewBag.Title = "InternshipList";
+    Layout = "~/Views/Admin/Index.cshtml";
+}
+
+<h2 class="mb-4">Staj Listesi ve İşlemleri</h2>
+
+<a href="/Internship/CreateInternship/" class="btn btn-info">Yeni Staj Ekleme</a>
+
+<br />
+<br />
+
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>Şirket Adı</th>
+        <th>Başlangıç Tarihi</th>
+        <th>Bitiş Tarihi</th>
+        <th>Açıklama</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <th>@item.InternshipId</th>
+            <td>@item.CompanyName</td>
+            <td>@item.StartDate</td>
+            <td>@item.FinishDate</td>
+            <td>@item.Description</td>
+            <td>
+                <a href="/Internship/UpdateInternship/@item.InternshipId" class="btn btn-warning">Güncelle</a>
+                <a href="/Internship/DeleteInternship/@item.InternshipId" class="btn btn-danger">Sil</a>
+            </td>
+        </tr>
+    }
+</table>

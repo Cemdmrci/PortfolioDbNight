@@ -1,0 +1,27 @@
+﻿
+@model PortfolioDbNight.Models.About
+@{
+    ViewBag.Title = "AboutList";
+    Layout = "~/Views/Admin/Index.cshtml";
+}
+
+<h2 class="mb-4">Hakkımda İşlemleri</h2>
+
+<form method="post">
+    @Html.HiddenFor(x => x.AboutId)
+    <label>Hakkımda Başlığı</label>
+    @Html.TextBoxFor(x => x.Title, new { @class = "form-control" })
+    <br />
+    <label>Hakkımda Görseli</label>
+    @Html.TextBoxFor(x => x.ImageUrl, new { @class = "form-control" })
+    <br />
+    <label>Hakkımda Yazısı</label>
+    @Html.TextAreaFor(x => x.Description, 5, 1, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-info">Hakkımda Alanını Güncelle</button>
+</form>
+
+
+
+
+

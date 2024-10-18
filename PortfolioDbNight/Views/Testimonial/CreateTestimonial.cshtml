@@ -1,0 +1,22 @@
+﻿﻿@model PortfolioDbNight.Models.Testimonial
+
+@{
+    ViewBag.Title = "CreateTestimonial";
+    Layout = "~/Views/Admin/Index.cshtml";
+}
+
+<h2 class="mb-4">Yeni Referans Ekleme Sayfası</h2>
+
+<form method="post">
+    <label>Adı Soyadı</label>
+    @Html.TextBoxFor(x => x.NameSurname, new { @class = "form-control" })
+    <br />
+    <label>Resim</label>
+    @Html.TextBoxFor(x => x.ImageUrl, new { @class = "form-control" })
+    <br />
+    <label>Yorum</label>
+    @Html.TextAreaFor(x => x.Comment, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-info">Referansı Kaydet</button>
+</form>
+

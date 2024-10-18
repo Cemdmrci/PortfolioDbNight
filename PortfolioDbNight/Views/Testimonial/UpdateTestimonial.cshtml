@@ -1,0 +1,23 @@
+﻿﻿@model PortfolioDbNight.Models.Testimonial
+
+@{
+    ViewBag.Title = "UpdateTestimonial";
+    Layout = "~/Views/Admin/Index.cshtml";
+}
+
+<h2 class="mb-4">Referans Güncelleme Sayfası</h2>
+
+<form method="post">
+    @Html.HiddenFor(x => x.TestimonialId)
+    <label>Ad Soyad</label>
+    @Html.TextBoxFor(x => x.NameSurname, new { @class = "form-control" })
+    <br />
+    <label>Resim</label>
+    @Html.TextBoxFor(x => x.ImageUrl, new { @class = "form-control" })
+    <br />
+    <label>Yorum</label>
+    @Html.TextAreaFor(x => x.Comment, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-info">Referansı Güncelle</button>
+</form>
+

@@ -1,0 +1,83 @@
+﻿@model List<PortfolioDbNight.Models.Contact>
+@{
+    ViewBag.Title = "Inbox";
+    Layout = "~/Views/Admin/Index.cshtml";
+    int count = 0;
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Kategori</th>
+        <th>Gönderen</th>
+        <th>Email</th>
+        <th>Tarih</th>
+        <th>Konu</th>
+        <th>Mesaj</th>
+        <th>İşlemler</th>
+        <th>Mesajı Aç</th>
+        <th>Mesajı Sil</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+
+        count++;
+        <tr>
+            <td>@count</td>
+            <td>
+                @if (item.Category.CategoryName == "Teşekkür")
+                {
+                    <a style="color:aqua">@item.Subject</a>
+                }
+                @if (item.Category.CategoryName == "Öneri")
+                {
+                    <a style="color:#000000">@item.Subject</a>
+                }
+                @if (item.Category.CategoryName == "Proje Talebi")
+                {
+                    <a style="color:darkviolet">@item.Subject</a>
+                }
+                @if (item.Category.CategoryName == "Referans")
+                {
+                    <a style="color:red">@item.Subject</a>
+                }
+                @if (item.Category.CategoryName == "Toplantı")
+                {
+                    <a style="color:blueviolet">@item.Subject</a>
+                }
+                @if (item.Category.CategoryName == "Görüşme")
+                {
+                    <a style="color:chartreuse">@item.Subject</a>
+                }
+                @if (item.Category.CategoryName == "Reklam")
+                {
+                    <a style="color:brown">@item.Subject</a>
+                }
+                @if (item.Category.CategoryName == "Diğer")
+                {
+                    <a style="color:chocolate">@item.Subject</a>
+                }
+            </td>
+            <td>@item.NameSurname</td>
+            <td>@item.Email</td>
+            <td>@item.SendDate</td>
+            <td>@item.Subject</td>
+            <td>@item.Message</td>
+
+            @if (item.IsRead == false)
+            {
+                <td><a href="/Message/ChangeMessageStatuesToTrue/@item.ContactId" class="btn btn-info">Okundu Olarak İşaretle</a></td>
+            }
+            else
+            {
+                <td><a href="/Message/ChangeMessageStatuesToFalse/@item.ContactId" class="btn btn-dark">Okunmadı OLarak İşaretle</a></td>
+
+            }
+
+            <td><a href="#" class="btn btn-warning">Mesajı Aç</a></td>
+            <td><a href="#" class="btn btn-danger">Mesajı Sil</a></td>
+        </tr>
+    }
+
+</table>
+
